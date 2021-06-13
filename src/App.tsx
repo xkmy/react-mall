@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { CssBaseline } from '@material-ui/core'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
+import Navbar from './components/Navbar/Navbar'
+
+import Products from './views/Products/Products'
+import Cart from './views/Cart/Cart'
+import Checkout from './views/Checkout/Checkout'
+
+import { ContextProvider } from './ContextProvider'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <ContextProvider>
+        <div style={{ display: 'flex' }}>
+          <CssBaseline />
+          <Navbar />
+          <Switch>
+            <Route exact path='/' component={Products} />
+            <Route exact path='/cart' component={Cart} />
+            <Route path='/checkout' exact component={Checkout}></Route>
+          </Switch>
+        </div>
+      </ContextProvider>
+    </Router>
+  )
 }
 
-export default App;
+export default App
