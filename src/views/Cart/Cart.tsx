@@ -12,11 +12,10 @@ const Cart = () => {
 
   const renderEmptyCart = () => (
     <Typography variant='subtitle1'>
-      You have no items in your shopping cart,
+      您的购物车中没有商品，
       <Link className={classes.link} to='/'>
-        start adding some
+        去添加
       </Link>
-      !
     </Typography>
   )
 
@@ -66,7 +65,7 @@ const Cart = () => {
         <Container>
           <div className={classes.toolbar} />
           <Typography className={classes.title} variant='h3' gutterBottom>
-            Your Shopping Cart
+            购物车
           </Typography>
           {!cart.line_items.length ? renderEmptyCart() : renderCart()}
         </Container>
